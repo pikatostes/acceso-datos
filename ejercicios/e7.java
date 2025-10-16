@@ -20,7 +20,8 @@ public class e7 {
                 System.out.println("Nombre\t\t\tTipo\t\tTamaño");
                 for (File file : files) {
                     String type = file.isDirectory() ? "Directorio" : "Archivo";
-                    System.out.printf("%-20s %-15s %-10d bytes%n", file.getName(), type, file.length());
+                    Long size = file.isDirectory() ? 0 : file.length();
+                    System.out.printf("%-20s %-15s %-10d bytes%n", file.getName(), type, size);
                 }
             } else {
                 System.out.println("No se pudo listar el contenido del directorio.");

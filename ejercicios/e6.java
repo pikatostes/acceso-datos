@@ -11,11 +11,11 @@ public class e6 {
 
         File file = new File(path);
 
-        if (file.exists()) {
-            // 1. Crear un objeto Date a partir de los milisegundos
+        if (file.exists() && file.isFile()) {
+            // Crear un objeto Date a partir de los milisegundos
             Date lastModifiedDate = new Date(file.lastModified());
 
-            // 4. Formatear e imprimir el resultado
+            // Formatear e imprimir el resultado
             System.out.println("El archivo pesa: " + file.length() + " bytes");
             System.out.println("Última modificación: " + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(lastModifiedDate));
         } else {

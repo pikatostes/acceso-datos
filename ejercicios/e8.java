@@ -16,6 +16,7 @@ public class e8 {
 
         if (!dir.exists() || !dir.isDirectory()) {
             System.out.println("tonoto");
+            sc.close();
             return;
         }
 
@@ -24,6 +25,7 @@ public class e8 {
 
         if (files == null) {
             System.out.println("No se encontró contenido");
+            sc.close();
             return;
         }
 

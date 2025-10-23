@@ -1,35 +1,38 @@
+/*
+ * En un directorio lista solo los ficheros con extension .txt
+ */
+
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.Scanner;
 
 public class e7 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduzca la ruta del directorio: ");
+        String path = sc.nextLine().trim();
 
-        System.out.println("Ingrese la ruta del directorio: ");
-        String path = scanner.nextLine().trim();
-
-        // new directory
         File dir = new File(path);
 
-        if (dir.exists() && dir.isDirectory()) {
-            File[] files = dir.listFiles();
-            if (files != null) {
-                System.out.println("-------------------------");
-                System.out.println("Contenido del directorio:");
-                System.out.println("-------------------------");
-                System.out.println("Nombre\t\t\tTipo\t\tTamaño");
-                for (File file : files) {
-                    String type = file.isDirectory() ? "Directorio" : "Archivo";
-                    Long size = file.isDirectory() ? 0 : file.length();
-                    System.out.printf("%-20s %-15s %-10d bytes%n", file.getName(), type, size);
-                }
-            } else {
-                System.out.println("No se pudo listar el contenido del directorio.");
-            }
-        } else {
-            System.out.println("El directorio no existe o la ruta no es un directorio.");
+        if (!dir.exists() || !dir.isDirectory()) {
+            System.out.println("tonoto");
+            sc.close();
+            return;
         }
 
-        scanner.close();
+        FilenameFilter soloTxt = (dir1, nombre) -> nombre.toLowerCase().endsWith(".txt");
+        File[] files = dir.listFiles(soloTxt);
+
+        if (files == null) {
+            System.out.println("No se encontró contenido");
+            sc.close();
+            return;
+        }
+
+        for (File file : files) {
+            System.out.println(file.getName());
+        }
+
+        sc.close();
     }
 }

@@ -1,11 +1,8 @@
 import java.io.File;
-import java.util.Scanner;
 
-public class e1 {
+public class e0 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Introduce la ruta del archivo: ");
-        String filePath = scanner.nextLine();
+        String filePath = "foto-tuenti.png";
 
         // Crear objeto File con la ruta proporcionada
         File file = new File(filePath);
@@ -15,7 +12,5 @@ public class e1 {
         } else {
             System.out.println("El archivo no existe.");
         }
-
-        scanner.close();
     }
 }

@@ -1,0 +1,3 @@
+Nombre: Ana - Edad: 22
+Nombre: Luis - Edad: 25
+Nombre: Marta - Edad: 20

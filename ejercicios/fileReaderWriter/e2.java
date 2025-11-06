@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class e2 {
     public static void main(String[] args) {
-        File file = new File("texto.txt");
+        File file = new File("ficheros/texto.txt");
         Integer lineCount = 0;
         
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {

@@ -1,4 +1,4 @@
-package writer;
+package fileReaderWriter;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class e3 {
     public static void main(String[] args) {
-        File origin = new File("origen.txt");
-        File copy = new File("copia.txt");
+        File origin = new File("ficheros/origen.txt");
+        File copy = new File("ficheros/copia.txt");
         // copiar el archivo origen.txt a copia.txt
 
         if (!origin.exists()) {

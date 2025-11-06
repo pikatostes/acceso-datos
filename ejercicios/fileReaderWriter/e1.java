@@ -8,7 +8,7 @@ import java.io.IOException;
 public class e1 {
     public static void main(String[] args) {
         // leer archivo texto.txt y mostrar contenido linea por linea
-        File file = new File("texto.txt");
+        File file = new File("ficheros/texto.txt");
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {

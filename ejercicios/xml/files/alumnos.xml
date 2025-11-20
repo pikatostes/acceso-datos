@@ -1,0 +1,14 @@
+<clase>
+   <alumno id="1" curso="1DAM">
+       <nombre>Ana</nombre>
+       <nota>8.5</nota>
+   </alumno>
+   <alumno id="2" curso="1DAM">
+       <nombre>Luis</nombre>
+       <nota>4.7</nota>
+   </alumno>
+   <alumno id="3" curso="2DAM">
+       <nombre>Marta</nombre>
+       <nota>9.1</nota>
+   </alumno>
+</clase>

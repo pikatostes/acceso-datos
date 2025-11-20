@@ -1,0 +1,10 @@
+<biblioteca>
+    <libro>
+        <titulo>El Quijote</titulo>
+        <autor>Cervantes</autor>
+    </libro>
+    <libro>
+        <titulo>Cien años de soledad</titulo>
+        <autor>García Márquez</autor>
+    </libro>
+</biblioteca>

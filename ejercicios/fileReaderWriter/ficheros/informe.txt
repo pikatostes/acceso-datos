@@ -1,0 +1,3 @@
+Número de líneas: 3
+Número de caracteres: 50
+Número de palabras: 10

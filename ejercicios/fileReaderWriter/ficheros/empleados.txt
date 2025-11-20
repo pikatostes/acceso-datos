@@ -1,0 +1,5 @@
+Nombre     Puesto          Salario   
+----------------------------------------
+Ana        Programadora    2000      
+Marta      Diseñadora      1950      
+Luis       Administrador   1800      

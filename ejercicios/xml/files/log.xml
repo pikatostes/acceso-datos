@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<log>
+    <evento tipo="INICIO">
+        <fecha>2025-11-25</fecha>
+        <hora>21:00:29</hora>
+        <mensaje>Aplicación iniciada correctamente.</mensaje>
+    </evento>
+</log>

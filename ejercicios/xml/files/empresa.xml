@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<empresa>
+    <departamento nombre="Informática">
+        <empleado>
+            <nombre>Ana</nombre>
+            <puesto>Desarrolladora</puesto>
+        </empleado>
+    </departamento>
+</empresa>

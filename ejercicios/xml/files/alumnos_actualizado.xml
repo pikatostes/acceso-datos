@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<clase>
+       
+    <alumno curso="1DAM" id="1">
+               
+        <nombre>Ana</nombre>
+               
+        <nota>9.0</nota>
+           
+    </alumno>
+       
+    <alumno curso="1DAM" id="2">
+               
+        <nombre>Luis</nombre>
+               
+        <nota>5.2</nota>
+           
+    </alumno>
+       
+    <alumno curso="2DAM" id="3">
+               
+        <nombre>Marta</nombre>
+               
+        <nota>9.1</nota>
+           
+    </alumno>
+    
+</clase>

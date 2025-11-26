@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<clase>
+       
+    <alumno curso="1DAM" estado="APROBADO" id="1">
+               
+        <nombre>Ana</nombre>
+               
+        <nota>8.5</nota>
+           
+    </alumno>
+       
+    <alumno curso="1DAM" estado="SUSPENSO" id="2">
+               
+        <nombre>Luis</nombre>
+               
+        <nota>4.7</nota>
+           
+    </alumno>
+       
+    <alumno curso="2DAM" estado="APROBADO" id="3">
+               
+        <nombre>Marta</nombre>
+               
+        <nota>9.1</nota>
+           
+    </alumno>
+    
+</clase>

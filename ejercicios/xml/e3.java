@@ -5,23 +5,22 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+// 3. Contar nodos y calcular una media
+// Usando el mismo alumnos.xml del ejercicio 2:
+// Tarea:
+// - Contar cuántos alumnos hay en total.
+// - Calcular la nota media de todos los alumnos.
+// - Mostrar:
+//     - Número total de alumnos.
+//     - Nota media con dos decimales.
+
 public class e3 {
     public static void main(String[] args) {
-        // 3. Contar nodos y calcular una media
-
-        // Usando el mismo alumnos.xml del ejercicio 2:
-
-        // Tarea:
-        // - Contar cuántos alumnos hay en total.
-        // - Calcular la nota media de todos los alumnos.
-        // - Mostrar:
-        //     - Número total de alumnos.
-        //     - Nota media con dos decimales.
-
         try {
             // 1. Cargar el archivo XML
             File xmlFile = new File("./files/alumnos.xml");
             Document document = XmlAux.loadDocument(xmlFile);
+            document.getDocumentElement().normalize();
 
             // 2. Obtener todos los elementos <alumnos>
             NodeList alumnos = document.getElementsByTagName("alumno");

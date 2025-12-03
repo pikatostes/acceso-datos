@@ -45,4 +45,18 @@ public class XmlAux {
             e.printStackTrace();
         }
     }
+
+    public static void printDocument(Document document) {
+        try {
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+
+            DOMSource source = new DOMSource(document);
+            StreamResult result = new StreamResult(System.out);
+
+            transformer.transform(source, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

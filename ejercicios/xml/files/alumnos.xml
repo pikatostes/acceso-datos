@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<clase>
-    <alumno curso="1DAM" id="1">
-        <nombre>Ana</nombre>
-        <nota>8.5</nota>
+<alumnos>
+        
+    <alumno curso="2DAM" id="1">
+                
+        <nombre>pepe</nombre>
+                
+        <nota>5.0</nota>
+            
     </alumno>
-    <alumno curso="1DAM" id="2">
-        <nombre>Luis</nombre>
-        <nota>4.7</nota>
+    
+    <alumno curso="2DAM" id="2">
+        <nombre>juanito</nombre>
+        <nota>10.0</nota>
     </alumno>
-    <alumno curso="2DAM" id="3">
-        <nombre>Marta</nombre>
-        <nota>9.1</nota>
-    </alumno>
-    <alumno curso="2DAM" id="4">
-        <nombre>pepelu</nombre>
-        <nota>7.3</nota>
-    </alumno>
-</clase>
+</alumnos>

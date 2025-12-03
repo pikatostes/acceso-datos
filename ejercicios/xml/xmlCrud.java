@@ -20,35 +20,61 @@ public class xmlCrud {
 
         try {
             File xmlFile = new File("./files/alumnos.xml");
+
+            if (!xmlFile.exists()) {
+                System.out.println("El archivo no existe. Creando uno nuevo...");
+
+                xmlFile.createNewFile();
+
+                // añadir estructura básica si el archivo no existe
+                DocumentBuilderFactory factoryInit = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builderInit = factoryInit.newDocumentBuilder();
+                Document newDoc = builderInit.newDocument();
+
+                Element root = newDoc.createElement("alumnos");
+                newDoc.appendChild(root);
+                saveXml(newDoc, xmlFile);
+            }
+
+            // instanciamos documento
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document xmlDoc = builder.parse(xmlFile);
             xmlDoc.getDocumentElement().normalize();
 
+            transformXml(xmlDoc, xmlFile);
+
             System.out.println("¿Qué desea hacer?");
-            System.out.println("[1] CREATE");
-            System.out.println("[2] READ");
-            System.out.println("[3] UPDATE");
-            System.out.println("[4] DELETE");
+            System.out.println("[1] Listar alumnos");
+            System.out.println("[2] Buscar alumno por ID");
+            System.out.println("[3] Añadir alumno");
+            System.out.println("[4] Modificar nota de alumno");
+            System.out.println("[5] Eliminar alumno");
+            System.out.println("[6] Salir");
 
             int option = Integer.parseInt(scanner.nextLine());
 
             switch (option) {
                 case 1:
-                    createXml(xmlDoc);
-                    saveXml(xmlDoc, xmlFile);
+                    readXml(xmlDoc);
                     break;
                 case 2:
-                    readXml(xmlDoc);
-                    saveXml(xmlDoc, xmlFile);
+                    searchStudent(xmlDoc);
                     break;
                 case 3:
-                    updateXml(xmlDoc);
+                    addStudent(xmlDoc);
                     saveXml(xmlDoc, xmlFile);
                     break;
                 case 4:
-                    deleteXml(xmlDoc);
+                    updateStudentMark(xmlDoc);
                     saveXml(xmlDoc, xmlFile);
+                    break;
+                case 5:
+                    deleteStudent(xmlDoc);
+                    saveXml(xmlDoc, xmlFile);
+                    break;
+                case 6:
+                    System.out.println("Salida del programa.");
                     break;
                 default:
                     System.out.println("Opción no válida.");
@@ -62,7 +88,7 @@ public class xmlCrud {
         }
     }
 
-    public static void createXml(Document xmlDoc) {
+    public static void addStudent(Document xmlDoc) {
         Scanner scanner = new Scanner(System.in);
 
         try {
@@ -82,7 +108,9 @@ public class xmlCrud {
             alumno.appendChild(nombreElem);
 
             Element notaElem = xmlDoc.createElement("nota");
-            notaElem.appendChild(xmlDoc.createTextNode("7.3"));
+            System.out.println("Introduzca la nota del alumno `" + nombre + "`: ");
+            Double nota = Double.parseDouble(scanner.nextLine());
+            notaElem.appendChild(xmlDoc.createTextNode(nota.toString()));
             alumno.appendChild(notaElem);
 
             // Insertar en la raíz
@@ -94,6 +122,21 @@ public class xmlCrud {
             e.printStackTrace();
         } finally {
             scanner.close();
+        }
+    }
+
+    public static void transformXml(Document xmlDoc, File xmlFile) throws Exception {
+        try {
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+
+            DOMSource source = new DOMSource(xmlDoc);
+            StreamResult result = new StreamResult(System.out);
+            transformer.transform(source, result);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -127,7 +170,37 @@ public class xmlCrud {
         }
     }
 
-    public static void updateXml(Document xmlDoc) {
+    public static void searchStudent(Document xmlDoc) {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println("Introduzca el ID del alumno a buscar: ");
+            Integer id = Integer.parseInt(scanner.nextLine());
+            NodeList alumnos = xmlDoc.getElementsByTagName("alumno");
+
+            for (int i = 0; i < alumnos.getLength(); i++) {
+                Node alumnoNode = alumnos.item(i);
+
+                if (alumnoNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element alumnoElement = (Element) alumnoNode;
+                    if (alumnoElement.getAttribute("id").equals(id.toString())) {
+                        System.out.println("ID: " + alumnoElement.getAttribute("id"));
+                        System.out.println("Nombre: " + alumnoElement.getElementsByTagName("nombre")
+                                .item(0)
+                                .getTextContent());
+                        System.out.println("Nota: " + alumnoElement.getElementsByTagName("nota")
+                                .item(0)
+                                .getTextContent());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            scanner.close();
+        }
+    }
+
+    public static void updateStudentMark(Document xmlDoc) {
         Scanner scanner = new Scanner(System.in);
 
         try {
@@ -146,15 +219,9 @@ public class xmlCrud {
                     if (alumnoElement.getAttribute("id").equals(id)) {
                         found = true;
 
-                        System.out.println("Introduzca el nuevo nombre: ");
-                        String nuevoNombre = scanner.nextLine();
-
                         System.out.println("Introduzca la nueva nota: ");
                         String nuevaNota = scanner.nextLine();
 
-                        alumnoElement.getElementsByTagName("nombre")
-                                .item(0)
-                                .setTextContent(nuevoNombre);
                         alumnoElement.getElementsByTagName("nota")
                                 .item(0)
                                 .setTextContent(nuevaNota);
@@ -176,7 +243,7 @@ public class xmlCrud {
         }
     }
 
-    public static void deleteXml(Document xmlDoc) {
+    public static void deleteStudent(Document xmlDoc) {
         Scanner scanner = new Scanner(System.in);
 
         try {
@@ -197,7 +264,7 @@ public class xmlCrud {
                         if (alumnoNode.getParentNode().removeChild(alumnoNode) != null) {
                             System.out.println("Alumno eliminado correctamente.");
                         }
-                        
+
                         break;
                     }
                 }
